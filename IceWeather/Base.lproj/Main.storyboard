@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="V0C-9k-8CN">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="IceWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,124 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d4z-tE-aco">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d4z-tE-aco" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Udi-8m-pat"/>
+                            <constraint firstItem="d4z-tE-aco" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fB6-xo-1eI"/>
+                            <constraint firstAttribute="trailing" secondItem="d4z-tE-aco" secondAttribute="trailing" id="hkl-Ez-s0r"/>
+                            <constraint firstAttribute="bottom" secondItem="d4z-tE-aco" secondAttribute="bottom" id="qjo-2t-oCu"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="4Za-4B-Leq">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="cpE-3y-0kQ">
+                            <connections>
+                                <action selector="reloadBarButtonTapped:" destination="BYZ-38-t0r" id="Nrq-je-vCC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="d4z-tE-aco" id="Oxo-ct-ufs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="851" y="-372"/>
+        </scene>
+        <!--Image Preview View Controller-->
+        <scene sceneID="h5R-7t-r5q">
+            <objects>
+                <viewController storyboardIdentifier="ImagePreviewViewController" id="r9r-Xw-0zH" customClass="ImagePreviewViewController" customModule="IceWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cc4-fY-iWq"/>
+                        <viewControllerLayoutGuide type="bottom" id="dNV-tr-BVk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a3S-J0-bg6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mbp-pU-LX9">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Mbp-pU-LX9" secondAttribute="trailing" id="6L8-vi-rPR"/>
+                            <constraint firstAttribute="bottom" secondItem="Mbp-pU-LX9" secondAttribute="bottom" id="AFv-F7-g5l"/>
+                            <constraint firstItem="Mbp-pU-LX9" firstAttribute="leading" secondItem="a3S-J0-bg6" secondAttribute="leading" id="EjF-np-VPt"/>
+                            <constraint firstItem="Mbp-pU-LX9" firstAttribute="top" secondItem="a3S-J0-bg6" secondAttribute="top" id="YbJ-3J-AzF"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="refresh" id="62N-fl-RM4">
+                            <connections>
+                                <action selector="rotateBarButtonTapped:" destination="r9r-Xw-0zH" id="j5S-v1-T8Q"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="PmK-Or-ndg"/>
+                        <barButtonItem title="送信" id="I44-6O-l46">
+                            <connections>
+                                <action selector="sendBarButtonTapped:" destination="r9r-Xw-0zH" id="MeF-aS-jbO"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="Rg3-3G-FV5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="cCv-xr-iWk">
+                            <connections>
+                                <action selector="cancelBarButtonTapped:" destination="r9r-Xw-0zH" id="hds-Za-Z1T"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="Mbp-pU-LX9" id="WMU-bJ-Ivp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UyO-Bb-hks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="851" y="445"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q11-dw-TT9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V0C-9k-8CN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fde-uX-ucC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="c95-48-RiC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCQ-B1-lgu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8" y="-372"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vvQ-oB-wrj">
+            <objects>
+                <navigationController storyboardIdentifier="ImagePreviewController" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="ok0-wh-0cs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="29M-jN-HKv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="xat-cK-UBq">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="r9r-Xw-0zH" kind="relationship" relationship="rootViewController" id="nVV-ka-f2n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFk-yK-CjO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8" y="445"/>
         </scene>
     </scenes>
 </document>

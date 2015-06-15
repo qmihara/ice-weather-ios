@@ -1,0 +1,3 @@
+enum IceWeatherAPIConfig: String {
+    case BaseURL = ""
+}
