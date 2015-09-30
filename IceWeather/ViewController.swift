@@ -57,7 +57,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.navigationItem.leftBarButtonItem?.enabled = true
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             
-            if let error = error {
+            if let _ = error {
                 self.navigationItem.title = "読み込み失敗"
                 let alertController = UIAlertController(title: "エラー", message: "写真の取得に失敗しました。", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     // MARK: - UIImagePickerControllerDelegate methods
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             let imagePreviewViewController = ImagePreviewViewController.imagePreviewViewController()
             imagePreviewViewController.delegate = self
@@ -98,7 +98,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     func imagePreviewViewController(viewController: ImagePreviewViewController, didFinishSelectImage image: UIImage) {
         self.navigationItem.leftBarButtonItem?.enabled = false
-        if let rightBarButtonItems = self.navigationItem.rightBarButtonItems as? [UIBarButtonItem] {
+        if let rightBarButtonItems = self.navigationItem.rightBarButtonItems {
             for barButtonItem in rightBarButtonItems {
                 barButtonItem.enabled = false
             }
@@ -108,14 +108,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         IceWeatherAPI.uploadIceImage(image) { iceImage, error in
             self.navigationItem.leftBarButtonItem?.enabled = true
-            if let rightBarButtonItems = self.navigationItem.rightBarButtonItems as? [UIBarButtonItem] {
+            if let rightBarButtonItems = self.navigationItem.rightBarButtonItems {
                 for barButtonItem in rightBarButtonItems {
                     barButtonItem.enabled = true
                 }
             }
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 
-            if let error = error {
+            if let _ = error {
                 self.navigationItem.title = "送信失敗"
                 let alertController = UIAlertController(title: "エラー", message: "写真の送信に失敗しました。", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
